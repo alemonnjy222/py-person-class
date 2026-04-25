@@ -1,6 +1,7 @@
 class Person:
     people = {}
-    def __init__(self, name: str, age: int):
+    
+    def __init__(self, name: str, age: int) -> None:
 
         self.name = name
         self.age = age
@@ -10,11 +11,11 @@ class Person:
 def create_person_list(people: list) -> list:
     persons = [Person(p["name"], p["age"]) for p in people]
 
-    for p in people:
-        person = Person.people[p["name"]]
+    for person_data in people:
+        person = Person.people[person_data["name"]]
         if p.get("wife"):
-            person.wife = Person.people[p["wife"]]
+            person.wife = Person.people[person_data["wife"]]
         if p.get("husband"):
-            person.husband = Person.people[p["husband"]]
+            person.husband = Person.people[person_data["husband"]]
 
     return persons
